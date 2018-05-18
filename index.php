@@ -30,12 +30,55 @@
                 ============================================= -->
             <div class="postcontent nobottommargin clearfix">
 
-                <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</p>
-                <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</p>
-                <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</p>
-                <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</p>
-                <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</p>
-                <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</p>
+                <!-- Posts
+                    ============================================= -->
+                <div id="posts">
+                    <?php
+                        if ( have_posts() ) {
+                            while ( have_posts() ) {
+                                the_post();
+
+                                ?>
+                                <div class="entry clearfix">
+                                    <?php
+                                    if ( has_post_thumbnail() ) {
+                                        ?>
+                                        <div class="entry-image">
+                                            <a href="<?php the_permalink(); ?>" data-lightbox="image">
+                                                <?php the_post_thumbnail( 'full', array( 'class' => 'image_fade' ) ); ?>
+                                            </a>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+
+                                    <div class="entry-title">
+                                        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                    </div>
+                                    <ul class="entry-meta clearfix">
+                                        <li><i class="icon-calendar3"></i> <?php echo get_the_date(); ?></li>
+                                        <li><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><i class="icon-user"></i> <?php the_author(); ?></a></li>
+                                        <li><i class="icon-folder-open"></i> <?php the_category( ' ' ); ?></li>
+                                        <li><a href="<?php the_permalink(); ?>#comments"><i class="icon-comments"></i> <?php comments_number( '0' ); ?> Comments</a></li>
+                                    </ul>
+                                    <div class="entry-content">
+                                        <?php the_excerpt(); ?>
+                                        <a href="<?php the_permalink(); ?>" class="more-link">Read More</a>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        }
+                    ?>
+
+                </div><!-- #posts end -->
+
+                <!-- Pagination
+                ============================================= -->
+                <ul class="pager nomargin">
+                <li class="previous"><a href="#">&larr; Older</a></li>
+                <li class="next"><a href="#">Newer &rarr;</a></li>
+                </ul><!-- .pager end -->
 
             </div><!-- .postcontent end -->
 

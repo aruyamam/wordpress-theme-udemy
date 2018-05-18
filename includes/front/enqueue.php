@@ -13,6 +13,7 @@ function ju_enqueue() {
 
   wp_enqueue_style('ju_google_fonts');
   wp_enqueue_style('ju_bootstrap');
+  wp_enqueue_style('ju_style');
   wp_enqueue_style('ju_dark');
   wp_enqueue_style('ju_font-icons');
   wp_enqueue_style('ju_animate');
